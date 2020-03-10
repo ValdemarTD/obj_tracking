@@ -7,11 +7,23 @@
 
 using namespace std;
 
-void write_string(string to_write, string filename){
-  //placeholder
+void write_string(string to_write, string filename, bool overwrite){
+  // Simple function to write a string to a file
+  fstream fs;
+  if(overwrite){
+    fs.open(filename);
+  }
+  else{
+    fs.open(filename, fstream::out | fstream::app);
+  }
+  if(fs.is_open()){
+    fs << to_write;
+    fs.close();
+  }
 }
 
 vector<string> parse_by_char(string to_parse, string delimiter){
+  // Parses a string into a vector of substrings
   vector<string> new_vec;
   while(to_parse.length() > 0){
     new_vec.push_back(to_parse.substr(0, to_parse.find(delimiter)));
@@ -21,6 +33,12 @@ vector<string> parse_by_char(string to_parse, string delimiter){
 }
 
 ObjStruct* struct_from_string(string to_structify){
+  /* Takes a stringified version of a stored struct
+   * and returns a struct containing all of the data
+   * the string. Designed to be used when working
+   * data from previous runs which is currently stored
+   * in text file form.
+   */
   ObjStruct* new_obj = new ObjStruct;
   vector<string> full_obj = parse_by_char(to_structify, ' ');
   vector<string> position = parse_by_char(full_obj[2], ',');

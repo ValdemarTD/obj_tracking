@@ -17,6 +17,7 @@ class ObjHashMap{
 private:
   HashMap<int, ObjStruct, 10, struct IntHash> obj_map;
   int hash_type = 0;
+  vector<string> keys;
 public:
   void add(ObjStruct&);
   void remove(ObjStruct&);

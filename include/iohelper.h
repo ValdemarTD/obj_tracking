@@ -7,6 +7,6 @@
 using namespace std;
 
 void write_string(string, string);
-vector<string> parse_by_char(string, string);
+vector<string> parse_by_char(string, string, bool);
 ObjStruct* struct_from_string(string);
 string string_from_struct(ObjStruct*);
