@@ -64,6 +64,9 @@ void ObjHashMap::read_h_map_from_file(string filename){
   }
   string new_line;
   while(getline(file_reader, new_line)){
+    #if DEBUG
+      cout << "Line is: " << new_line << endl;
+    #endif
     ObjStruct* new_obj = struct_from_string(new_line);
     this->add(new_obj);
   }

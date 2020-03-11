@@ -25,9 +25,15 @@ void write_string(string to_write, string filename, bool overwrite){
 vector<string> parse_by_char(string to_parse, string delimiter){
   // Parses a string into a vector of substrings
   vector<string> new_vec;
-  while(to_parse.length() > 0){
+  while(to_parse.find(delimiter) != string::npos){
+    #if DEBUG
+      cout << "Remaining string: " << to_parse << endl;
+    #endif
     new_vec.push_back(to_parse.substr(0, to_parse.find(delimiter)));
     to_parse.erase(0, to_parse.find(delimiter) + delimiter.length());
+  }
+  if(to_parse.length() > 0){
+    new_vec.push_back(to_parse);
   }
   return new_vec;
 }

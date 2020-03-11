@@ -1,5 +1,7 @@
 #pragma once
 
+#define DEBUG 1
+
 #include <string>
 #include <vector>
 #include "./obj_struct.h"
